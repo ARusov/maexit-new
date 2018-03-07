@@ -1,0 +1,12 @@
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/_all';
+// Global bulma base styles
+@import '~bulma/sass/base/all';
+@import '~bulma/bulma.sass';
+
+// Other global bulma imports
+@import '~bulma/sass/elements/container';
+@import '~bulma/sass/elements/title';
+@import '~bulma/sass/elements/button';
+@import '~bulma/sass/elements/form';
+@import '~bulma/sass/grid/columns';
