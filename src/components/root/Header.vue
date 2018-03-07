@@ -66,19 +66,50 @@
               </a>
             </p>
             <p class="control">
-              <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
-                <span>Login</span>
-              </a>
+              <a class="button" @click="openLoginModal()">Login</a>
             </p>
           </div>
         </div>
       </div>
     </div>
+    <div id="login" class="modal" v-bind:class="{'is-active': isActive }">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
   </nav>
 </template>
+
+
+<script lang="ts">
+  import Vue from 'vue';
+
+  export default Vue.extend({
+
+    methods: {
+      openLoginModal() {
+        this.isActive = !this.isActive;
+      }
+    },
+    data() {
+      return {
+        isActive: false
+      };
+    },
+  })
+
+</script>
 
 <style lang="scss" scoped>
 
