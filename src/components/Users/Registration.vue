@@ -18,12 +18,6 @@
                   <input class="input is-large" type="password" placeholder="Your Password">
                 </div>
               </div>
-
-              <div class="field">
-                <div class="control">
-                  <input class="input is-large" type="password" placeholder="Repeat password" v-model="pwd">
-                </div>
-              </div>
               <div class="field">
                 <div class="control">
                   <div class="select is-large is-fullheight">

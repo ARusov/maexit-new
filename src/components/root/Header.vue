@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div v-if="loggedIn" class="navbar-item">
+        <div v-if="this.$store.state.isLoggedIn" class="navbar-item">
           <!--<a class="navbar-item">{{userEmail}}</a>-->
           <!--TODO: Link to right place-->
           <router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>
@@ -64,13 +64,15 @@
   import Vue from 'vue';
   import axios from 'axios';
   import {Util} from '../shared/Util';
+  import store from '../../store';
   export default Vue.extend({
     created(){
-      if (Util.isLogedIn()) {
+      if (Util.isLoggedIn()) {
         this.loggedIn = true;
         this.userEmail = localStorage.getItem(Util.USER_EMAIL);
       }
     },
+
     methods:{
       logout(){
         Util.logout()
@@ -79,8 +81,8 @@
     },
     data(){
       return ({
-        loggedIn: false,
-        userEmail: localStorage.getItem(Util.USER_EMAIL)
+        userEmail: localStorage.getItem(Util.USER_EMAIL),
+        loggedIn : false
       })
     }
   })

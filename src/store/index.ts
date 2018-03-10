@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     items: [],
-    loading: true
+    loading: true,
+    isLoggedIn:false
   },
   mutations: {
     [SET_ITEMS](state, payload) {
