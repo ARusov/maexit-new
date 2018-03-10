@@ -39,7 +39,7 @@
           <!--TODO: Link to right place-->
           <router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>
           <span>|</span>
-          <a class="navbar-item">Logout</a>
+          <a class="navbar-item" @click="logout()">Logout</a>
 
         </div>
 
@@ -71,15 +71,19 @@
         this.userEmail = localStorage.getItem(Util.USER_EMAIL);
       }
     },
+    methods:{
+      logout(){
+        Util.logout()
+        this.$router.push("login")
+      },
+    },
     data(){
       return ({
         loggedIn: false,
         userEmail: localStorage.getItem(Util.USER_EMAIL)
       })
     }
-
   })
-
 </script>
 
 <style lang="scss" scoped>

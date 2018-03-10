@@ -4,7 +4,7 @@ import Main from '../components/Main.vue';
 import Questionnaire from '../components/Questionnaire.vue';
 import Registration from '../components/Users/Registration.vue';
 import Login from '../components/Users/Login.vue';
-import BusinessOwner from '../components/BusinessOwner.vue';
+import BusinessOwner from '../components/Businessowner/BusinessOwner.vue';
 
 Vue.use(Router);
 

@@ -8,8 +8,12 @@ import './styles/styles.scss';
 
 import HowTo from './components/HowTo.vue';
 import LoginDropDown from './components/root/LoginDropDown.vue';
+import KeyValueDriver from './components/Businessowner/KeyValueDriver.vue';
+import BusinessProfile from './components/Businessowner/BusinessProfile.vue';
 Vue.component('HowTo', HowTo)
 Vue.component('LoginDropDown', LoginDropDown)
+Vue.component('KeyValueDriver', KeyValueDriver)
+Vue.component('BusinessProfile', BusinessProfile)
 Vue.config.productionTip = false;
 
 

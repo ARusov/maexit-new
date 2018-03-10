@@ -14,6 +14,8 @@
   import Footer from './components/root/Footer.vue';
   import HowTo from './components/HowTo.vue';
   import LoginDropDown from './components/root/LoginDropDown.vue';
+  import KeyValueDriver from './components/Businessowner/KeyValueDriver.vue';
+  import BusinessProfile from './components/Businessowner/BusinessProfile.vue';
 
   export default Vue.extend({
     name: 'App',
@@ -21,7 +23,9 @@
       Header,
       Footer,
       HowTo,
-      LoginDropDown
+      LoginDropDown,
+      KeyValueDriver,
+      BusinessProfile
     }
   });
 </script>

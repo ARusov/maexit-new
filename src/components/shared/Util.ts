@@ -73,4 +73,10 @@ export class Util {
     }
   }
 
+  public static logout(){
+    localStorage.removeItem(Util.USER_EMAIL);
+    localStorage.removeItem(Util.USER_TYPE);
+    localStorage.removeItem(Util.ID_TOKEN);
+  }
+
 }
