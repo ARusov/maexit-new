@@ -155,7 +155,7 @@
 
   export default Vue.extend({
     created() {
-      if (!Util.isLogedIn()) {
+      if (!Util.isLoggedIn()) {
         this.$router.push('login')
       }
     },

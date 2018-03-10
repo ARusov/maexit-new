@@ -1,6 +1,6 @@
 import axios from "axios";
-import Vue from 'vue';
-import router from '../../router/index';
+import router from "../../router/index";
+import store from "../../store/index";
 
 export class Util {
 
@@ -28,7 +28,7 @@ export class Util {
     return HTTP;
   }
 
-  public static isLogedIn() {
+  public static isLoggedIn() {
     var jwt = localStorage.getItem(Util.ID_TOKEN)
     if (jwt) {
       return true
@@ -45,38 +45,37 @@ export class Util {
     })
       .then(response => {
         if (response.status == 200) {
-          var id_token = response.data.token
-          localStorage.setItem(Util.ID_TOKEN, id_token)
-          Util.setUser(email)
-          Util.routAfterLogin(response.data.type)
-        }
-      })
-  }
-
-  public static setUser(email: string) {
-    Util.getHTTP('').get('user/' + email, {
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem(Util.ID_TOKEN)
-      }
-    })
-      .then(response => {
-        if (response.status == 200) {
-          localStorage.setItem(Util.USER_EMAIL, email);
+          localStorage.setItem(Util.ID_TOKEN, response.data.token)
+          store.state.isLoggedIn=true;
+          localStorage.setItem(Util.USER_EMAIL, response.data.email);
           localStorage.setItem(Util.USER_TYPE, response.data.type);
+          Util.routAfterLogin(response.data.type);
+
         }
       })
   }
 
-  public static routAfterLogin(type:string){
+
+  public static routAfterLogin(type: string) {
     if (localStorage.getItem(Util.USER_TYPE) == "1") {
       router.push('businessowner')
     }
   }
 
-  public static logout(){
+  public static logout() {
+    // header.loggedIn=false;
     localStorage.removeItem(Util.USER_EMAIL);
     localStorage.removeItem(Util.USER_TYPE);
     localStorage.removeItem(Util.ID_TOKEN);
+    store.state.isLoggedIn=false;
+  }
+
+  public static routToProfile(){
+    if(Util.isLoggedIn()){
+      if (localStorage.getItem(Util.USER_TYPE) == "1") {
+        router.push('businessowner')
+      }
+    }
   }
 
 }

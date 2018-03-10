@@ -34,10 +34,9 @@
           </div>
         </div>
 
-        <div v-if="loggedIn" class="navbar-item">
-          <!--<a class="navbar-item">{{userEmail}}</a>-->
-          <!--TODO: Link to right place-->
-          <router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>
+        <div v-if="this.$store.state.isLoggedIn" class="navbar-item">
+          <a class="navbar-item" @click="routToProfile()">{{userEmail}}</a>
+          <!--<router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>-->
           <span>|</span>
           <a class="navbar-item" @click="logout()">Logout</a>
 
@@ -64,23 +63,29 @@
   import Vue from 'vue';
   import axios from 'axios';
   import {Util} from '../shared/Util';
+  import store from '../../store';
   export default Vue.extend({
     created(){
-      if (Util.isLogedIn()) {
+      if (Util.isLoggedIn()) {
+        this.$store.state.isLoggedIn=true;
         this.loggedIn = true;
         this.userEmail = localStorage.getItem(Util.USER_EMAIL);
       }
     },
+
     methods:{
       logout(){
         Util.logout()
         this.$router.push("login")
       },
+      routToProfile(){
+          Util.routToProfile();
+      }
     },
     data(){
       return ({
-        loggedIn: false,
-        userEmail: localStorage.getItem(Util.USER_EMAIL)
+        userEmail: localStorage.getItem(Util.USER_EMAIL),
+        loggedIn : false
       })
     }
   })
