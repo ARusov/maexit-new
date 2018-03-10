@@ -33,7 +33,7 @@
             <div class="columns">
               <div class="column">
                 <div class="box">
-                    <progress class="progress is-primary" value="15" max="100">30%</progress>
+                  <progress class="progress is-primary" value="15" max="100">30%</progress>
                   <p><strong>Cashflow Efficiency</strong></p>
                   <p>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
