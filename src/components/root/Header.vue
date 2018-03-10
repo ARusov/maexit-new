@@ -1,10 +1,14 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar is-fixed-top">
     <div class="navbar-brand">
-      <a class="navbar-item" href="http://maexit.net">
+
+      <router-link to="/" class="navbar-item">
         <img src="http://maexit.net/public/assets/logo.png" alt="Maexit Greate value | Greate deals" width="112"
              height="28">
-      </a>
+      </router-link>
+      <!--<a class="navbar-item" href="http://maexit.net">-->
+      <!---->
+      <!--</a>-->
       <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
         <span></span>
         <span></span>
@@ -14,101 +18,72 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="https://bulma.io/">Home</a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="/documentation/overview/start/">Docs</a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="/documentation/overview/start/">Overview</a>
-            <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-              Modifiers
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-              Columns
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-              Layout
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-              Form
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-              Elements
-            </a>
-            <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-              Components
-            </a>
-          </div>
-        </div>
+
       </div>
 
       <div class="navbar-end">
+        <a class="navbar-item" href="#">About us</a>
+        <a class="navbar-item" href="#">Contacts</a>
         <div class="navbar-item">
-          <div class="field is-grouped">
+          <div class="field">
             <p class="control">
-              <a class="button is-danger" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
-                <span>Jetzt zur Strategie-Session anmelden!</span>
+              <a class="button is-danger" href="#">
+                <span>ZUM FRAGEBOGEN</span>
               </a>
-            </p>
-            <p class="control">
-              <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
-                 data-social-target="http://localhost:4000" target="_blank"
-                 href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
-              <span class="icon">
-                <i class="fab fa-twitter"></i>
-              </span>
-                <span>
-                Registration
-              </span>
-              </a>
-            </p>
-            <p class="control">
-              <a class="button" @click="openLoginModal()">Login</a>
             </p>
           </div>
         </div>
+
+        <div v-if="loggedIn" class="navbar-item">
+          <!--<a class="navbar-item">{{userEmail}}</a>-->
+          <!--TODO: Link to right place-->
+          <router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>
+          <span>|</span>
+          <a class="navbar-item" @click="logout()">Logout</a>
+
+        </div>
+
+        <div v-else class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">
+            <span>Have an account? <span class="has-text-weight-bold">Login</span></span>
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <LoginDropDown/>
+          </div>
+        </div>
+
+
       </div>
     </div>
-    <div id="login" class="modal" v-bind:class="{'is-active': isActive }">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
-          <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <!-- Content ... -->
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success">Save changes</button>
-          <button class="button">Cancel</button>
-        </footer>
-      </div>
-    </div>
+
   </nav>
 </template>
 
 
 <script lang="ts">
   import Vue from 'vue';
-
+  import axios from 'axios';
+  import {Util} from '../shared/Util';
   export default Vue.extend({
-
-    methods: {
-      openLoginModal() {
-        this.isActive = !this.isActive;
+    created(){
+      if (Util.isLogedIn()) {
+        this.loggedIn = true;
+        this.userEmail = localStorage.getItem(Util.USER_EMAIL);
       }
     },
-    data() {
-      return {
-        isActive: false
-      };
+    methods:{
+      logout(){
+        Util.logout()
+        this.$router.push("login")
+      },
     },
+    data(){
+      return ({
+        loggedIn: false,
+        userEmail: localStorage.getItem(Util.USER_EMAIL)
+      })
+    }
   })
-
 </script>
 
 <style lang="scss" scoped>
