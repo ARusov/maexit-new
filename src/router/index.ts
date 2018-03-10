@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import ButtonTest from '../components/example/ButtonTest.vue';
 import Main from '../components/Main.vue';
 import Questionnaire from '../components/Questionnaire.vue';
+import Registration from '../components/Users/Registration.vue';
+import Login from '../components/Users/Login.vue';
+import BusinessOwner from '../components/BusinessOwner.vue';
 
 Vue.use(Router);
 
@@ -17,6 +19,21 @@ export default new Router({
       path: '/questionnaire',
       name: 'Questionnaire',
       component: Questionnaire,
+    },
+    {
+      path: '/registration',
+      name: 'Registration',
+      component: Registration,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
+    },
+    {
+      path: '/businessowner',
+      name: 'BusinessOwner',
+      component: BusinessOwner,
     },
   ],
 });

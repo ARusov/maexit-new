@@ -13,13 +13,15 @@
   import Header from './components/root/Header.vue';
   import Footer from './components/root/Footer.vue';
   import HowTo from './components/HowTo.vue';
+  import LoginDropDown from './components/root/LoginDropDown.vue';
 
   export default Vue.extend({
     name: 'App',
     components: {
       Header,
       Footer,
-      HowTo
+      HowTo,
+      LoginDropDown
     }
   });
 </script>
