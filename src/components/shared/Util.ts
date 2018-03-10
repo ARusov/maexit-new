@@ -30,7 +30,7 @@ export class Util {
 
   public static isLoggedIn() {
     var jwt = localStorage.getItem(Util.ID_TOKEN)
-    if (jwt && store.state.isLoggedIn) {
+    if (jwt) {
       return true
     }
     else {
@@ -68,6 +68,14 @@ export class Util {
     localStorage.removeItem(Util.USER_TYPE);
     localStorage.removeItem(Util.ID_TOKEN);
     store.state.isLoggedIn=false;
+  }
+
+  public static routToProfile(){
+    if(Util.isLoggedIn()){
+      if (localStorage.getItem(Util.USER_TYPE) == "1") {
+        router.push('businessowner')
+      }
+    }
   }
 
 }
