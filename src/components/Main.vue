@@ -9,6 +9,9 @@
           <h2 class="subtitle">
             Greate value | Greate deals
           </h2>
+          <a class="button is-danger" href="#">
+            <span>ZUM FRAGEBOGEN</span>
+          </a>
         </div>
       </div>
     </div>

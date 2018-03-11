@@ -16,6 +16,8 @@
   import LoginDropDown from './components/root/LoginDropDown.vue';
   import KeyValueDriver from './components/Businessowner/KeyValueDriver.vue';
   import BusinessProfile from './components/Businessowner/BusinessProfile.vue';
+  import StarRating from 'vue-star-rating'
+  import {  Slider  } from 'element-ui'
 
   export default Vue.extend({
     name: 'App',
@@ -25,7 +27,9 @@
       HowTo,
       LoginDropDown,
       KeyValueDriver,
-      BusinessProfile
+      BusinessProfile,
+      StarRating,
+      Slider
     }
   });
 </script>
