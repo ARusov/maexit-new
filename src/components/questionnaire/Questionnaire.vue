@@ -1,10 +1,6 @@
 <template>
-  <section class="hero">
-    <div class="hero-body">
-      <h1> Hello questionnaire {{allPages}}</h1>
-      <!--<h1> Hello questionnaire {{this.$store.state.questions.length}}</h1>-->
-      <!--<h1> Hello questionnaire {{currentPage}}</h1>-->
-
+  <section class="hero is-medium">
+    <div class="hero-body ">
       <div class="container">
         <div class="box" v-for="question in getQuestions(this.currentPage)"
              :key="question.id">
@@ -27,10 +23,10 @@
               <div class="block">
                 <p class="demonstration has-text-centered"> {{question.value}}%</p>
                 <div class="block">
-                  <el-slider
-                    v-model="question.value"
-                    :step="10"
-                    show-stop>
+                  <el-slider class="is-large"
+                             v-model="question.value"
+                             :step="10"
+                             show-stops>
                   </el-slider>
                 </div>
               </div>
@@ -48,22 +44,32 @@
         </div>
         <div class="columns">
           <div class="column"></div>
-          <div class="column"></div>
-          <div class="column">
-            <nav class="pagination " role="navigation" aria-label="pagination">
-              <a
-                v-if="this.currentPage>0"
-                class="pagination-previous is-left"
-                @click="previousPage()">Previous page</a>
-              <a class="pagination-next is-right"
-                 v-if="this.currentPage<this.allPages-1"
-                 @click="nextPage()">Next page</a>
-              <a class="pagination-next is-right"
-                 v-if="this.currentPage==this.allPages-1"
-                 @click="finishQuestionnaire()">Finish Questionnaire</a>
-            </nav>
+          <div class="column has-text-right">
+            <a
+              v-if="this.currentPage>0"
+              class="pagination-previous"
+              @click="previousPage()">Previous page</a>
           </div>
-          <div class="column"></div>
+          <div class="column has-text-centered">
+
+            <a>{{this.currentPage + 1}} of {{this.allPages}}</a>
+
+            <ul class="pagination-list has-text-centered">
+              <!--<li v-for="n in this.allPages">-->
+              <!--<a class="pagination-link is-current">{{n}}</a>-->
+              <!--</li>-->
+            </ul>
+
+
+          </div>
+          <div class="column has-text-left">
+            <a class="pagination-next "
+               v-if="this.currentPage<this.allPages-1"
+               @click="nextPage()">Next page</a>
+            <a class="pagination-next"
+               v-if="this.currentPage==this.allPages-1"
+               @click="finishQuestionnaire()">Finish Questionnaire</a>
+          </div>
           <div class="column"></div>
         </div>
       </div>
@@ -85,10 +91,11 @@
     created() {
 
       //TODO: remove hardcoded URLs
-      axios.get('http://localhost:8090/test/question')
+      axios.get(Util.getPublicApiUrl('questions'))
         .then(response => {
           this.$store.commit(SET_QUESTIONS, response.data);
           this.allPages = Math.round(this.$store.state.questions.length / this.itemsPerPage);
+
         });
 
 
@@ -97,7 +104,7 @@
     data(){
       return {
         currentPage: 0,
-        itemsPerPage: 5,
+        itemsPerPage: 8,
         allPages: 0,
         resultCount: this.$store.state.questions.length,
         returnQuestion: [],
@@ -132,10 +139,16 @@
         this.currentPage++;
       },
       finishQuestionnaire(){
+        Util.getPublicHTTP('').post('answers', {
+              questions:this.$store.state.questions,
+              email:this.$store.state.questionEmail,
+              industryId:this.$store.state.questionIndustryId
+          })
+          .then(response => {
 
-        for (let item of this.$store.state.questions) {
-          console.log(item.value)
-        }
+          });
+
+        this.$router.push('/questions/thanks')
       }
 
 
@@ -143,4 +156,33 @@
   })
 
 </script>
+
+<style lang="scss">
+  .el-slider__button {
+    width: 20px;
+    height: 20px;
+  }
+
+  .el-slider__runway {
+    height: 10px;
+  }
+
+  .el-slider__bar {
+    height: 10px;
+  }
+
+  .el-slider__stop {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    display: inline-block;
+    top: -5px;
+    border: 2px solid rgba(64, 158, 255, 0.19);
+  }
+
+  .el-slider__button-wrapper {
+    top: -13px;
+  }
+</style>
+
 

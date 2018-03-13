@@ -2,15 +2,23 @@ import axios from "axios";
 import router from "../../router/index";
 import store from "../../store/index";
 
+
 export class Util {
+
+
 
   static ID_TOKEN: string = 'id_token';
   static ACCESS_TOKEN: string = 'access_token';
   static USER_TYPE: string = 'user_type';
   static USER_EMAIL: string = 'user_email';
+  // static  API_URL:string = 'http://maexit-api-dev.eu-central-1.elasticbeanstalk.com';
+  static  API_URL:string = 'http://localhost:8090';
 
   public static getApiUrl(url: string) {
-    return `http://localhost:8090/api/${url}`;
+    return `${Util.API_URL}/api/${url}`;
+  }
+  public static getPublicApiUrl(url: string) {
+    return `${Util.API_URL}/publicapi/${url}`;
   }
 
   public static getHTTP(url: string) {
@@ -20,10 +28,17 @@ export class Util {
     return HTTP;
   }
 
+  public static getPublicHTTP(url: string) {
+    let HTTP = axios.create({
+      baseURL: Util.getPublicApiUrl(url),
+    })
+    return HTTP;
+  }
+
 
   public static getHTTPlogin(url: string) {
     let HTTP = axios.create({
-      baseURL: 'http://localhost:8090/login',
+      baseURL: Util.API_URL+'/login',
     })
     return HTTP;
   }

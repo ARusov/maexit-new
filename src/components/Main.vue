@@ -1,4 +1,4 @@
-  <template>
+<template>
   <section>
     <div class="hero is-large has-bg-img">
       <div class="hero-body">
@@ -9,9 +9,9 @@
           <h2 class="subtitle">
             Greate value | Greate deals
           </h2>
-          <a class="button is-danger" href="#">
+          <router-link to="questionnaire" class="button is-danger">
             <span>ZUM FRAGEBOGEN</span>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
