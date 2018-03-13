@@ -90,7 +90,9 @@
 
     created() {
 
-      //TODO: remove hardcoded URLs
+        if(this.$store.state.questionEmail==''){
+          this.$router.push('questionnaire')
+        }
       axios.get(Util.getPublicApiUrl('questions'))
         .then(response => {
           this.$store.commit(SET_QUESTIONS, response.data);
