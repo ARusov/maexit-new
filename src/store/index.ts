@@ -20,7 +20,9 @@ export default new Vuex.Store({
     items: [],
     questions:[],
     loading: true,
-    isLoggedIn:false
+    isLoggedIn:false,
+    questionEmail:'',
+    questionIndustryId:0
   },
   mutations: {
     [SET_QUESTIONS](state, payload) {

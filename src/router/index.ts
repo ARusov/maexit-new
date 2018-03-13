@@ -5,6 +5,8 @@ import Registration from '../components/Users/Registration.vue';
 import Login from '../components/Users/Login.vue';
 import BusinessOwner from '../components/Businessowner/BusinessOwner.vue';
 import Questionnaire from '../components/questionnaire/Questionnaire.vue';
+import QuestionnaireRoot from '../components/questionnaire/QuestionnaireRoot.vue';
+import QuestionnaireThanks from '../components/questionnaire/QuestionnaireThanks.vue';
 
 Vue.use(Router);
 
@@ -17,8 +19,17 @@ export default new Router({
     },
     {
       path: '/questionnaire',
+      name: 'QuestionnaireRoot',
+      component: QuestionnaireRoot,
+    },{
+      path: '/questions',
       name: 'Questionnaire',
       component: Questionnaire,
+    }
+    ,{
+      path: '/questions/thanks',
+      name: 'QuestionnaireThanks',
+      component: QuestionnaireThanks,
     },
     {
       path: '/registration',
