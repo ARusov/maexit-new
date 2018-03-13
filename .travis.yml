@@ -34,6 +34,10 @@ notifications:
   email: false
 
 deploy:
-  provider: heroku
+  provider: npm
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
   api_key: "5849ea81-83ea-42ae-ae45-9a64b8e45175"
   app: maexit-new
