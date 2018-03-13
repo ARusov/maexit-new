@@ -26,6 +26,9 @@ cache:
 install:
   - yarn install
 
+script:
+- echo "skipping tests"
+
 notifications:
   email: false
 
