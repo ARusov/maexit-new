@@ -36,5 +36,5 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: "YOUR ENCRYPTED API KEY"
+    secure: "C59qKdqrPbWEgiB7g5TbNg"
     app: maexit-new
