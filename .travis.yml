@@ -13,7 +13,6 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq yarn=1.5.1-1
 addons:
-  chrome: stable
 
 language: node_js
 node_js:
@@ -27,13 +26,12 @@ cache:
 install:
   - yarn install
 
-script:
-  # Use Chromium instead of Chrome.
-  # - export CHROME_BIN=chromium-browser
-
-after_script:
-  # Stop backend
-  - pkill node
-
 notifications:
   email: false
+
+
+deploy:
+  provider: heroku
+  api_key: "C59qKdqrPbWEgiB7g5TbNg"
+  secure: "C59qKdqrPbWEgiB7g5TbNg"
+  app: "maexit-new"
