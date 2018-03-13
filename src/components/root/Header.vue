@@ -24,15 +24,15 @@
       <div class="navbar-end">
         <a class="navbar-item" href="#">About us</a>
         <a class="navbar-item" href="#">Contacts</a>
-        <div class="navbar-item">
-          <div class="field">
-            <p class="control">
-              <a class="button is-danger" href="#">
-                <span>ZUM FRAGEBOGEN</span>
-              </a>
-            </p>
-          </div>
-        </div>
+        <!--<div class="navbar-item">-->
+          <!--<div class="field">-->
+            <!--<p class="control">-->
+              <!--<a class="button is-danger" href="#">-->
+                <!--<span>ZUM FRAGEBOGEN</span>-->
+              <!--</a>-->
+            <!--</p>-->
+          <!--</div>-->
+        <!--</div>-->
 
         <div v-if="this.$store.state.isLoggedIn" class="navbar-item">
           <a class="navbar-item" @click="routToProfile()">{{userEmail}}</a>

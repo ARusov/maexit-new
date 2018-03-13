@@ -157,7 +157,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" >
   .el-slider__button {
     width: 20px;
     height: 20px;

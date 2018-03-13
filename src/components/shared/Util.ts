@@ -11,8 +11,8 @@ export class Util {
   static ACCESS_TOKEN: string = 'access_token';
   static USER_TYPE: string = 'user_type';
   static USER_EMAIL: string = 'user_email';
-  // static  API_URL:string = 'http://maexit-api-dev.eu-central-1.elasticbeanstalk.com';
-  static  API_URL:string = 'http://localhost:8090';
+  static  API_URL:string = 'http://maexit-api-dev.eu-central-1.elasticbeanstalk.com';
+  // static  API_URL:string = 'http://localhost:8090';
 
   public static getApiUrl(url: string) {
     return `${Util.API_URL}/api/${url}`;
