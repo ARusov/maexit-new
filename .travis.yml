@@ -32,9 +32,7 @@ script:
 notifications:
   email: false
 
-
 deploy:
   provider: heroku
-  api_key:
-    secure: "C59qKdqrPbWEgiB7g5TbNg"
-    app: maexit-new
+  api_key: "5849ea81-83ea-42ae-ae45-9a64b8e45175"
+  app: my-app-123
