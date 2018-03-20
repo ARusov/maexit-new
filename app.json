@@ -1,0 +1,32 @@
+{
+  "name": "maexit-new",
+  "scripts": {
+  },
+  "env": {
+    "NODE_ENV": {
+      "required": true
+    },
+    "TRANSLOADIT_AUTH_KEY": {
+      "required": true
+    },
+    "TRANSLOADIT_SECRET_KEY": {
+      "required": true
+    },
+    "TRANSLOADIT_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "transloadit"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
