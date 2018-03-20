@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="hero is-large has-bg-img">
+    <div class="hero is-medium has-bg-img">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">

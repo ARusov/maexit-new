@@ -1,6 +1,7 @@
 <template>
   <section class="hero">
     <div class="hero-body">
+      <br>
       <h1 class="title">Welcome to Dashboard</h1>
       <h2 class="subtitle">Dear {{userEmail}}</h2>
       <div class="columns">

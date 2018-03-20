@@ -72,6 +72,18 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.3.tgz#8475e0f2d1ad1f858c4ec2e76ed9a2456a09ad83"
 
+"@fortawesome/fontawesome-free-brands@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-brands/-/fontawesome-free-brands-5.0.8.tgz#dd234982bd958b48ab1108570831d2b41bc8f73b"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.3"
+
+"@fortawesome/fontawesome-free-regular@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-regular/-/fontawesome-free-regular-5.0.8.tgz#feaa96ee230e7f0d685ede3ae512aa6a1dca2480"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.3"
+
 "@fortawesome/fontawesome-free-solid@^5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-solid/-/fontawesome-free-solid-5.0.8.tgz#2890639d57dc16e2a90bb847c41770e38f72e432"
@@ -8596,6 +8608,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-awesome@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-2.3.5.tgz#fe7fcf185cff794cb37a3c45d16eeb851e94fd9c"
+
 vue-eslint-parser@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -8690,6 +8706,10 @@ vuejs-jwt@^1.0.0:
   dependencies:
     jsonwebtoken "^8.1.0"
     tiny-cookie "^2.0.2"
+
+vuetify@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.0.9.tgz#036f0c97aaba452ec4bdfb87c4c69448db46af74"
 
 vuex@^3.0.1:
   version "3.0.1"
