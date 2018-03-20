@@ -17,7 +17,16 @@
   import KeyValueDriver from './components/Businessowner/KeyValueDriver.vue';
   import BusinessProfile from './components/Businessowner/BusinessProfile.vue';
   import StarRating from 'vue-star-rating'
-  import {  Slider  } from 'element-ui'
+  import CourseInfo from './components/consultant/CourseInfo.vue'
+  import Curriculum from './components/consultant/Curriculum.vue'
+  import Lecture from './components/consultant/Lecture.vue'
+  import CourseSection from './components/consultant/CourseSection.vue'
+  import {Slider} from 'element-ui'
+  import fontawesome from '@fortawesome/fontawesome'
+  import brands from '@fortawesome/fontawesome-free-brands'
+  import { faSpinner } from '@fortawesome/fontawesome-free-solid'
+
+
 
   export default Vue.extend({
     name: 'App',
@@ -29,7 +38,12 @@
       KeyValueDriver,
       BusinessProfile,
       StarRating,
-      Slider
+      Slider,
+      CourseInfo,
+      Curriculum,
+      Lecture,
+      CourseSection,
+//      Icon
     }
   });
 </script>

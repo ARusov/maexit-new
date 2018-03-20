@@ -33,11 +33,26 @@ script:
 notifications:
   email: false
 
-deploy:
-  provider: npm
-  skip_cleanup: true
-  on:
-    tags: true
-    branch: master
-  api_key: "5849ea81-83ea-42ae-ae45-9a64b8e45175"
-  app: maexit-new
+after_success:
+  # Turn off warnings about SSH keys:
+#  https://github.com/ARusov/maexit-new.git
+    - echo "Host heroku.com" >> ~/.ssh/config
+     - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+     - echo "   CheckHostIP no" >> ~/.ssh/config
+     - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+     # Clear your current Heroku SSH keys:
+     - heroku keys:clear
+     # Add a new SSH key to Heroku
+     - yes | heroku keys:add
+     # Clone Heroku deployment repo to dist folder
+     - git clone https://github.com/ARusov/maexit-new.git
+     # Build
+     - cd ./maexit-new
+     - npm run build
+     -
+     - cd dist
+     - git config --global user.name "INSERT Your Name"
+     - git config --global user.email "INSERT-Your-Email@address.com"
+     - git add *
+     - git commit -am "Travis CI"
+     - git push origin master

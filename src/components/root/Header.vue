@@ -1,41 +1,30 @@
 <template>
-  <nav class="navbar is-fixed-top">
+  <nav class="navbar" v-bind:class="{'is-fixed-top':!isMobileView}">
     <div class="navbar-brand">
 
       <router-link to="/" class="navbar-item">
         <img src="http://maexit.net/public/assets/logo.png" alt="Maexit Greate value | Greate deals" width="112"
              height="28">
       </router-link>
-      <!--<a class="navbar-item" href="http://maexit.net">-->
-      <!---->
-      <!--</a>-->
-      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" @click="openMobileView()">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
-      <div class="navbar-start">
-
-      </div>
-
-      <div class="navbar-end">
+    <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{'is-active':isMobileView}">
+      <div class="navbar-end ">
         <a class="navbar-item" href="#">About us</a>
         <a class="navbar-item" href="#">Contacts</a>
-        <!--<div class="navbar-item">-->
-          <!--<div class="field">-->
-            <!--<p class="control">-->
-              <!--<a class="button is-danger" href="#">-->
-                <!--<span>ZUM FRAGEBOGEN</span>-->
-              <!--</a>-->
-            <!--</p>-->
-          <!--</div>-->
-        <!--</div>-->
+        <div class="navbar-item">
+          <a class="button is-danger" @click="modalView()">
+            Jetzt zur Strategie-Session anmelden!
+          </a>
+        </div>
 
         <div v-if="this.$store.state.isLoggedIn" class="navbar-item">
-          <a class="navbar-item" @click="routToProfile()">{{userEmail}}</a>
+          <a class="navbar-item" @click="routToProfile()">Dashboard</a>
           <!--<router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>-->
           <span>|</span>
           <a class="navbar-item" @click="logout()">Logout</a>
@@ -55,6 +44,28 @@
       </div>
     </div>
 
+
+    <div id="m-call" class="modal" v-bind:class="{'is-active':isModalView}" role="dialog" >
+      <div class="modal-background"></div>
+      <!--<div class="modal-dialog box">-->
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="box" @blur="modalView()">
+          <div class="modal-body">
+            <iframe src="https://app.acuityscheduling.com/schedule.php?owner=14643758" width="100%" height="800"
+                    frameBorder="0"></iframe>
+            <!--<script src="https://d3gxy7nm8y4yjr.cloudfront.net/js/embed.js" type="text/javascript"></script>-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+          </div>
+          <button class="modal-close is-large" aria-label="close" @click="modalView()"></button>
+        </div>
+      </div>
+    </div>
+
+    <!--</div>-->
+
   </nav>
 </template>
 
@@ -67,25 +78,33 @@
   export default Vue.extend({
     created(){
       if (Util.isLoggedIn()) {
-        this.$store.state.isLoggedIn=true;
+        this.$store.state.isLoggedIn = true;
         this.loggedIn = true;
         this.userEmail = localStorage.getItem(Util.USER_EMAIL);
       }
     },
 
-    methods:{
+    methods: {
+      openMobileView(){
+        this.isMobileView = !this.isMobileView
+      },
       logout(){
         Util.logout()
         this.$router.push("login")
       },
       routToProfile(){
-          Util.routToProfile();
+        Util.routToProfile();
+      },
+      modalView(){
+        this.isModalView = !this.isModalView;
       }
     },
     data(){
       return ({
         userEmail: localStorage.getItem(Util.USER_EMAIL),
-        loggedIn : false
+        loggedIn: false,
+        isMobileView: false,
+        isModalView: false
       })
     }
   })

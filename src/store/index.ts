@@ -3,17 +3,27 @@ import Vuex from 'vuex'
 
 import {DELETE_ITEM, EDIT_ITEM, SET_ITEMS} from './mutation-types'
 import {SET_QUESTIONS} from './mutation-types'
+import {SET_COURSE} from './mutation-types'
 
 Vue.use(Vuex)
 
 
 interface IQuestionState {
-  projects: IQuestion[],
+  questions : IQuestion[],
   loading: boolean;
 }
 export interface IQuestion {
   name: string;
 }
+
+// interface  ICourseState{
+//   course: ICourse,
+//   loading:false
+// }
+//
+// export interface  ICourse{
+//   name:string
+// }
 
 export default new Vuex.Store({
   state: {
@@ -22,7 +32,8 @@ export default new Vuex.Store({
     loading: true,
     isLoggedIn:false,
     questionEmail:'',
-    questionIndustryId:0
+    questionIndustryId:0,
+    course:null,
   },
   mutations: {
     [SET_QUESTIONS](state, payload) {
