@@ -11,7 +11,7 @@ export class Util {
   static ACCESS_TOKEN: string = 'access_token';
   static USER_TYPE: string = 'user_type';
   static USER_EMAIL: string = 'user_email';
-  static  API_URL:string = 'http://maexit-api-dev.eu-central-1.elasticbeanstalk.com';
+  static  API_URL:string = 'https://maexit-api.herokuapp.com';
   // static  API_URL:string = 'http://localhost:8090';
 
   public static getApiUrl(url: string) {
@@ -44,7 +44,7 @@ export class Util {
   }
 
   public static isLoggedIn() {
-    var jwt = localStorage.getItem(Util.ID_TOKEN)
+    var jwt = localStorage.getItem(Util.USER_EMAIL)
     if (jwt) {
       return true
     }
@@ -54,13 +54,13 @@ export class Util {
   }
 
   public static login(email: string, pwd: string) {
-    Util.getHTTPlogin('').post('', {
+    Util.getHTTP('').post('login', {
       email: email,
       pwd: pwd,
     })
       .then(response => {
         if (response.status == 200) {
-          localStorage.setItem(Util.ID_TOKEN, response.data.token)
+          // localStorage.setItem(Util.ID_TOKEN, response.data.token)
           store.state.isLoggedIn=true;
           localStorage.setItem(Util.USER_EMAIL, response.data.email);
           localStorage.setItem(Util.USER_TYPE, response.data.type);
@@ -83,6 +83,8 @@ export class Util {
     localStorage.removeItem(Util.USER_TYPE);
     localStorage.removeItem(Util.ID_TOKEN);
     store.state.isLoggedIn=false;
+
+
   }
 
   public static routToProfile(){

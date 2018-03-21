@@ -15,7 +15,7 @@
 
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="password" placeholder="Your Password">
+                  <input class="input is-large" type="password" placeholder="Your Password" v-model="pwd">
                 </div>
               </div>
               <div class="field">
@@ -31,7 +31,7 @@
               </div>
               <div class="field">
                 <p>Already a member?
-                  <router-link to="login" >Login</router-link>
+                  <router-link to="/login" >Login</router-link>
                 </p>
                 <!--<p>Already a member? <a href="#">Login</a></p>-->
               </div>
@@ -60,7 +60,7 @@
                   type:this.type
           })
             .then(response => {
-              this.$router.push('Main')
+              this.$router.push('/')
             });
         }
     },

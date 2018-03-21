@@ -13,6 +13,7 @@
             <ul class="menu-list">
               <li><a @click="changeView(1)">Dashboard</a></li>
               <li><a @click="changeView(2)">Profile</a></li>
+              <li><a href="https://maexit.bizequity.com/" target="_blank">BizEquity</a></li>
             </ul>
           </aside>
         </div>

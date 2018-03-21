@@ -8,10 +8,8 @@
         <p>
           IHRE SCORECARD BASIERT AUF 8 KEY-VALUE-DRIVER, DIE IM AKTUELLEN BUSINESS- UND LEADERSHIP-UMFELD BEWERTET SIND.</p>
         </br>
-
-
-
         <progress class="progress is-warning is-small" :value='bokvd.index' max="100"></progress>
+        <a :href='"/api/getpdfreport/" + bokvd.id'>Download your report</a>
       </div>
       <div class="section is-small">
         <h3 class="subtitle has-text-grey">Key-Value-Driver Details</h3>
@@ -33,7 +31,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[0].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Wie gut sind Wissen und Prozesse im Unternehmen organisiert? Für den Investor ist es entscheidend, wie schnell sind unternehmensfremde Personen arbeitsfähig bzw. wie gut können die Prozesse mit anderen Unternehmen verbunden werden.
                   </p>
                 </div>
               </div>
@@ -57,7 +55,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[1].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Ist Ihr Unternehmen ein Cashflow Verbrenner oder eine Cashflow Maschine? Je weniger Geld der Käufer in Ihr Unternehmen einzahlen muss, desto höher der Preis, den er bezahlen wird. Wie Cashflow effektiv arbeiten Sie?
                   </p>
                 </div>
               </div>
@@ -83,7 +81,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[2].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Wie stellen Sie sicher, daß auch die nächsten Jahre ein entsprechend hoher Umsatz erzielt wird bzw. dass Konjunkturschwankungen die Liquidität des Unternehmens nicht gefährden?
                   </p>
                 </div>
               </div>
@@ -107,7 +105,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[3].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Die Verkaufsfähigkeit eines Unternehmens erlaubt keine allzu große Abhängigkeit von Kunden, Mitarbeitern oder Lieferanten. Wie gut haben Sie Ihr Unternehmen darauf vorbereitet?
                   </p>
                 </div>
               </div>
@@ -133,7 +131,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[4].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Einer der wichtigsten Faktoren, um Ihr Unternehmen verkaufbar zu machen, ist Ihr Wachstumspotenzial, besonders die Skalierbarkeit und Flexibilität Ihrer Geschäftsmodelle. Wie dynamisch sind Sie aufgestellt?
                   </p>
                 </div>
               </div>
@@ -157,7 +155,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[5].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Haben Sie ein gutes Innovations- und Lifecyclemanagement? Wie fördern und pflegen Sie eine aktive Innovationskultur? Innovationen sind der Grundstein für Wachstum und Beständigkeit in der Zukunft. Wie leben Sie Innovation?
                   </p>
                 </div>
               </div>
@@ -183,7 +181,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[6].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Dieser Faktor misst das Ausmaß, in dem Ihr Geschäft ohne Sie erfolgreich sein kann. Nur, wenn Ihr Unternehmen auch ohne Sie gut läuft und in der Lage ist, Wachstum zu generieren, besitzt es Attraktivität für potentielle Investoren. Wie gut läuft es ohne Sie?
                   </p>
                 </div>
               </div>
@@ -207,7 +205,7 @@
                 <div class="column ">
                   <p><strong>{{bokvd.kvds[7].kvdName}}</strong></p>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                    Der X-Faktor, der viele Unternehmenskäufe rein aus finanzmathematischen Gesichtspunkten nur schwer nachvollziehen lässt, sind immaterielle Mehrwert, die das Unternehmen für den Käufer alternativlos machen. Was macht Sie besonders?
                   </p>
                 </div>
               </div>
@@ -236,13 +234,12 @@
       Util.getHTTP('').get('answer/' + this.userEmail, {})
         .then(response => {
           this.bokvd = response.data
-          if(this.bokvd==null){
-            this.isKVD=false
+          if (this.bokvd == null) {
+            this.isKVD = false
           }
         });
     },
-    methods:{
-    },
+    methods: {},
     data(){
       return {
         userEmail: localStorage.getItem(Util.USER_EMAIL),

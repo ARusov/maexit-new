@@ -25,7 +25,7 @@
       </div>
       <div class="field ">
         <div class="control">
-          <router-link to="registration" class="button is-link is-fullwidth">Create new account</router-link>
+          <router-link to="/registration" class="button is-link is-fullwidth">Create new account</router-link>
         </div>
       </div>
     </div>

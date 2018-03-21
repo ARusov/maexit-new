@@ -3,7 +3,7 @@
     <div class="navbar-brand">
 
       <router-link to="/" class="navbar-item">
-        <img src="http://maexit.net/public/assets/logo.png" alt="Maexit Greate value | Greate deals" width="112"
+        <img src="../assets/logo.png" alt="Maexit Greate value | Greate deals" width="112"
              height="28">
       </router-link>
       <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" @click="openMobileView()">
@@ -15,8 +15,8 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{'is-active':isMobileView}">
       <div class="navbar-end ">
-        <a class="navbar-item" href="#">About us</a>
-        <a class="navbar-item" href="#">Contacts</a>
+        <a class="navbar-item" href="/about">About us</a>
+        <!--<a class="navbar-item" href="#">Contacts</a>-->
         <div class="navbar-item">
           <a class="button is-danger" @click="modalView()">
             Jetzt zur Strategie-Session anmelden!
@@ -45,7 +45,7 @@
     </div>
 
 
-    <div id="m-call" class="modal" v-bind:class="{'is-active':isModalView}" role="dialog" >
+    <div id="m-call" class="modal" v-bind:class="{'is-active':isModalView}" role="dialog">
       <div class="modal-background"></div>
       <!--<div class="modal-dialog box">-->
       <!-- Modal content-->

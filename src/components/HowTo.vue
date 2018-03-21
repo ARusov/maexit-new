@@ -44,7 +44,7 @@
             <br/>
             <div class="card-image is-flex is-horizontal-center">
               <figure class="image is-128x128 ">
-                <img src="http://maexit.net/public/assets/step2.png" class="">
+                <img src="./assets/step2.png" class="">
               </figure>
             </div>
             <div class="card-content has-text-justified">
@@ -69,7 +69,7 @@
             <br/>
             <div class="card-image is-flex is-horizontal-center">
               <figure class="image is-128x128 ">
-                <img src="http://maexit.net/public/assets/step3.png" class="">
+                <img src="./assets/step3.png" class="">
               </figure>
             </div>
             <div class="card-content has-text-justified">

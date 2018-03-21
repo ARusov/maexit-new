@@ -23,7 +23,7 @@
 <style lang="scss" scoped>
 
   .has-bg-img {
-    background: url('http://maexit.net/public/assets/banner.png') center center;
+    background: url('./assets/banner.png') center center;
     background-size: cover;
   }
 

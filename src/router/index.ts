@@ -10,6 +10,7 @@ import QuestionnaireThanks from "../components/questionnaire/QuestionnaireThanks
 import CourseCreateRoot from "../components/consultant/CourseCreateRoot.vue";
 import CourseCreate from "../components/consultant/CourseCreate.vue";
 import ConsultantDashboard from "../components/consultant/dashboard/ConsultantDashboard.vue";
+import About from "../components/About.vue";
 
 Vue.use(Router);
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/course/create',
       name: 'CourseCreateRoot',
       component: CourseCreateRoot,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
     },
 
     {
