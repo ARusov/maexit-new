@@ -1,0 +1,58 @@
+dist: trusty
+
+
+env:
+  # Use test credentials for sequelize
+  - NODE_ENV=dev
+
+sudo: required
+before_install: # if "install" is overridden
+  # Repo for Yarn
+  - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq yarn
+cache:
+  yarn: true
+
+language: node_js
+node_js:
+  - "9"
+
+cache:
+  yarn: true
+  directories:
+     - ./node_modules
+
+install:
+  - yarn install
+
+script:
+- echo "skipping tests"
+
+notifications:
+  email: false
+
+after_success:
+  # Turn off warnings about SSH keys:
+#  https://github.com/ARusov/maexit-new.git
+    - echo "Host heroku.com" >> ~/.ssh/config
+     - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+     - echo "   CheckHostIP no" >> ~/.ssh/config
+     - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+     # Clear your current Heroku SSH keys:
+     - heroku keys:clear
+     # Add a new SSH key to Heroku
+     - yes | heroku keys:add
+     # Clone Heroku deployment repo to dist folder
+     - git clone https://github.com/ARusov/maexit-new.git
+     # Build
+     - cd ./maexit-new
+     - npm run build
+     -
+     - cd dist
+     - git config --global user.name "INSERT Your Name"
+     - git config --global user.email "INSERT-Your-Email@address.com"
+     - git add *
+     - git commit -am "Travis CI"
+     - git push origin master

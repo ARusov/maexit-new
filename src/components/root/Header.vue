@@ -1,114 +1,113 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar" v-bind:class="{'is-fixed-top':!isMobileView}">
     <div class="navbar-brand">
-      <a class="navbar-item" href="http://maexit.net">
-        <img src="http://maexit.net/public/assets/logo.png" alt="Maexit Greate value | Greate deals" width="112"
+
+      <router-link to="/" class="navbar-item">
+        <img src="../assets/logo.png" alt="Maexit Greate value | Greate deals" width="112"
              height="28">
-      </a>
-      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      </router-link>
+      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample" @click="openMobileView()">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="https://bulma.io/">Home</a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="/documentation/overview/start/">Docs</a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="/documentation/overview/start/">Overview</a>
-            <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-              Modifiers
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-              Columns
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-              Layout
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-              Form
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-              Elements
-            </a>
-            <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-              Components
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="navbar-end">
+    <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{'is-active':isMobileView}">
+      <div class="navbar-end ">
+        <a class="navbar-item" href="/about">About us</a>
+        <!--<a class="navbar-item" href="#">Contacts</a>-->
         <div class="navbar-item">
-          <div class="field is-grouped">
-            <p class="control">
-              <a class="button is-danger" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
-                <span>Jetzt zur Strategie-Session anmelden!</span>
-              </a>
-            </p>
-            <p class="control">
-              <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
-                 data-social-target="http://localhost:4000" target="_blank"
-                 href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
-              <span class="icon">
-                <i class="fab fa-twitter"></i>
-              </span>
-                <span>
-                Registration
-              </span>
-              </a>
-            </p>
-            <p class="control">
-              <a class="button" @click="openLoginModal()">Login</a>
-            </p>
+          <a class="button is-danger" @click="modalView()">
+            Jetzt zur Strategie-Session anmelden!
+          </a>
+        </div>
+
+        <div v-if="this.$store.state.isLoggedIn" class="navbar-item">
+          <a class="navbar-item" @click="routToProfile()">Dashboard</a>
+          <!--<router-link class="navbar-item" to="businessowner" >{{userEmail}}</router-link>-->
+          <span>|</span>
+          <a class="navbar-item" @click="logout()">Logout</a>
+
+        </div>
+
+        <div v-else class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">
+            <span>Have an account? <span class="has-text-weight-bold">Login</span></span>
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <LoginDropDown/>
           </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div id="m-call" class="modal" v-bind:class="{'is-active':isModalView}" role="dialog">
+      <div class="modal-background"></div>
+      <!--<div class="modal-dialog box">-->
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="box" @blur="modalView()">
+          <div class="modal-body">
+            <iframe src="https://app.acuityscheduling.com/schedule.php?owner=14643758" width="100%" height="800"
+                    frameBorder="0"></iframe>
+            <!--<script src="https://d3gxy7nm8y4yjr.cloudfront.net/js/embed.js" type="text/javascript"></script>-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+          </div>
+          <button class="modal-close is-large" aria-label="close" @click="modalView()"></button>
         </div>
       </div>
     </div>
-    <div id="login" class="modal" v-bind:class="{'is-active': isActive }">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
-          <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <!-- Content ... -->
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success">Save changes</button>
-          <button class="button">Cancel</button>
-        </footer>
-      </div>
-    </div>
+
+    <!--</div>-->
+
   </nav>
 </template>
 
 
 <script lang="ts">
   import Vue from 'vue';
-
+  import axios from 'axios';
+  import {Util} from '../shared/Util';
+  import store from '../../store';
   export default Vue.extend({
-
-    methods: {
-      openLoginModal() {
-        this.isActive = !this.isActive;
+    created(){
+      if (Util.isLoggedIn()) {
+        this.$store.state.isLoggedIn = true;
+        this.loggedIn = true;
+        this.userEmail = localStorage.getItem(Util.USER_EMAIL);
       }
     },
-    data() {
-      return {
-        isActive: false
-      };
-    },
-  })
 
+    methods: {
+      openMobileView(){
+        this.isMobileView = !this.isMobileView
+      },
+      logout(){
+        Util.logout()
+        this.$router.push("login")
+      },
+      routToProfile(){
+        Util.routToProfile();
+      },
+      modalView(){
+        this.isModalView = !this.isModalView;
+      }
+    },
+    data(){
+      return ({
+        userEmail: localStorage.getItem(Util.USER_EMAIL),
+        loggedIn: false,
+        isMobileView: false,
+        isModalView: false
+      })
+    }
+  })
 </script>
 
 <style lang="scss" scoped>

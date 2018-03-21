@@ -2,15 +2,46 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import {DELETE_ITEM, EDIT_ITEM, SET_ITEMS} from './mutation-types'
+import {SET_QUESTIONS} from './mutation-types'
+import {SET_COURSE} from './mutation-types'
 
 Vue.use(Vuex)
+
+
+interface IQuestionState {
+  questions : IQuestion[],
+  loading: boolean;
+}
+export interface IQuestion {
+  name: string;
+}
+
+// interface  ICourseState{
+//   course: ICourse,
+//   loading:false
+// }
+//
+// export interface  ICourse{
+//   name:string
+// }
 
 export default new Vuex.Store({
   state: {
     items: [],
-    loading: true
+    questions:[],
+    loading: true,
+    isLoggedIn:false,
+    questionEmail:'',
+    questionIndustryId:0,
+    course:null,
   },
   mutations: {
+    [SET_QUESTIONS](state, payload) {
+      state.questions = payload;
+      state.loading = false;
+    },
+
+
     [SET_ITEMS](state, payload) {
       state.items = payload;
       state.loading = false;

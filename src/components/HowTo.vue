@@ -2,10 +2,13 @@
   <section class="hero">
     <div class="hero-body">
       <div class="container ">
-        <h3 class="level-item tile">
+        <h3 class="level-item title">
           Steigern Sie Ihren strategischen Unternehmenswert um bis zu 300%
         </h3>
       </div>
+    </div>
+
+    <div class="container ">
       <div class="columns">
         <div class="column">
           <div class="card">
@@ -41,7 +44,7 @@
             <br/>
             <div class="card-image is-flex is-horizontal-center">
               <figure class="image is-128x128 ">
-                <img src="http://maexit.net/public/assets/step2.png" class="">
+                <img src="./assets/step2.png" class="">
               </figure>
             </div>
             <div class="card-content has-text-justified">
@@ -66,7 +69,7 @@
             <br/>
             <div class="card-image is-flex is-horizontal-center">
               <figure class="image is-128x128 ">
-                <img src="http://maexit.net/public/assets/step3.png" class="">
+                <img src="./assets/step3.png" class="">
               </figure>
             </div>
             <div class="card-content has-text-justified">
@@ -81,6 +84,44 @@
 
       </div>
     </div>
+
+
+    <div class="section is-small is-widescreen">
+      <div class="hero is-dark">
+        <div class="columns is-centered">
+          <div class="column is-2">
+            <img src="./assets/cover_bdl.jpg" class="img-responsive book-cover">
+
+          </div>
+          <div class="column is-6 is-vcentered ">
+            <h2 class="title is-spaced has-text-centered">Building Digital Leaders</h2>
+            <ul class="is-centered ">
+              <li class="subtitle is-6">
+                Der Business Innovation Guide 4.0
+              </li>
+              <li class="subtitle  is-6">
+                Masterplan für ein attraktives, skalierbares und profitables
+                Unternehmen nach 12-36 Monaten
+              </li>
+              <li class="subtitle  is-6">
+                Mit einfachen Innovationstechniken und digitalen
+                Führungsqualitäten an die Spitze
+              </li>
+              <li class="subtitle  is-6">
+                Wie Kunden sich selbst überzeugen und Sie an Ihren
+                Wettbewerbern mitverdienen
+              </li>
+              <li class="subtitle  is-6">
+                Wie Sie die besten Daten sammeln, richtig interpretieren und
+                richtig entscheiden
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </section>
 </template>
 
@@ -90,8 +131,6 @@
   .is-horizontal-center {
     justify-content: center;
   }
-
-
 
 
 </style>
