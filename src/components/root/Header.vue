@@ -15,7 +15,7 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{'is-active':isMobileView}">
       <div class="navbar-end ">
-        <a class="navbar-item" href="/about">About us</a>
+        <router-link to="/about" class="navbar-item">About us</router-link>
         <!--<a class="navbar-item" href="#">Contacts</a>-->
         <div class="navbar-item">
           <a class="button is-danger" @click="modalView()">
