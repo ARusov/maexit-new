@@ -9,7 +9,7 @@
           IHRE SCORECARD BASIERT AUF 8 KEY-VALUE-DRIVER, DIE IM AKTUELLEN BUSINESS- UND LEADERSHIP-UMFELD BEWERTET SIND.</p>
         </br>
         <progress class="progress is-warning is-small" :value='bokvd.index' max="100"></progress>
-        <a :href='"/api/getpdfreport/" + bokvd.id'>Download your report</a>
+        <a :href='Util.API_URL+"/api/getpdfreport/" + bokvd.id'>Download your report</a>
       </div>
       <div class="section is-small">
         <h3 class="subtitle has-text-grey">Key-Value-Driver Details</h3>
