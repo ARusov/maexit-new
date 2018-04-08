@@ -12,16 +12,16 @@ import Curriculum from './components/consultant/Curriculum.vue';
 import Lecture from './components/consultant/Lecture.vue';
 import CourseSection from './components/consultant/CourseSection.vue';
 import QuestionnaireRoot from './components/questionnaire/QuestionnaireRoot.vue';
-import {  Slider  } from 'element-ui'
+// import {  Slider, Dialog  } from 'element-ui'
 import fontawesome from '@fortawesome/fontawesome'
 import brands from '@fortawesome/fontawesome-free-brands'
 import { faSpinner } from '@fortawesome/fontawesome-free-solid'
 import Vuetify from 'vuetify'
+import Element from 'element-ui';
 
 
 // Global styles
 import './styles/styles.scss';
-import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'vuetify/dist/vuetify.min.css'
 
@@ -38,7 +38,9 @@ Vue.component('Curriculum', Curriculum)
 Vue.component('Lecture', Lecture)
 Vue.component('CourseSection', CourseSection)
 Vue.component('QuestionnaireRoot', QuestionnaireRoot)
-Vue.component(Slider.name, Slider)
+// Vue.component(Slider.name, Slider)
+// Vue.component(Dialog.name, Dialog)
+Vue.use(Element);
 Vue.use(Vuetify)
 
 

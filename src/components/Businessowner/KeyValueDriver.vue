@@ -4,223 +4,62 @@
 
     <div v-if="isKVD">
       <div class="box">
-        <p><strong>MAEXIT GESAMTSCORE</strong></p>
-        <p>
-          IHRE SCORECARD BASIERT AUF 8 KEY-VALUE-DRIVER, DIE IM AKTUELLEN BUSINESS- UND LEADERSHIP-UMFELD BEWERTET SIND.</p>
-        </br>
-        <progress class="progress is-warning is-small" :value='bokvd.index' max="100"></progress>
-        <a :href='"https://maexit-api.herokuapp.com//api/getpdfreport/" + bokvd.id'>Download your report</a>
+        <div class="columns">
+          <div class="column is-2">
+            <el-progress type="circle" :percentage='getOverallindex()' color="#d83737"></el-progress>
+          </div>
+          <div class="column">
+            <p><strong>MAEXIT GESAMTSCORE</strong></p>
+            <p>
+              IHRE SCORECARD BASIERT AUF 8 KEY-VALUE-DRIVER, DIE IM AKTUELLEN BUSINESS- UND LEADERSHIP-UMFELD BEWERTET SIND.
+            </p>
+            </br>
+          </div>
+
+        </div>
+
+        <!--<progress class="progress is-warning is-small" :value='bokvd.index' max="100"></progress>-->
+        <!--<a :href='"https://maexit-api.herokuapp.com//api/getpdfreport/" + bokvd.id'>Download your report</a>-->
       </div>
       <div class="section is-small">
         <h3 class="subtitle has-text-grey">Key-Value-Driver Details</h3>
-
-        <div class="columns">
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[0].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[0].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[0].kvdName}}</strong></p>
-                  <p>
-                    Wie gut sind Wissen und Prozesse im Unternehmen organisiert? Für den Investor ist es entscheidend, wie schnell sind unternehmensfremde Personen arbeitsfähig bzw. wie gut können die Prozesse mit anderen Unternehmen verbunden werden.
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-            </div>
-
-          </div>
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[1].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[1].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[1].kvdName}}</strong></p>
-                  <p>
-                    Ist Ihr Unternehmen ein Cashflow Verbrenner oder eine Cashflow Maschine? Je weniger Geld der Käufer in Ihr Unternehmen einzahlen muss, desto höher der Preis, den er bezahlen wird. Wie Cashflow effektiv arbeiten Sie?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-        </div>
-        <div class="columns">
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[2].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[2].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[2].kvdName}}</strong></p>
-                  <p>
-                    Wie stellen Sie sicher, daß auch die nächsten Jahre ein entsprechend hoher Umsatz erzielt wird bzw. dass Konjunkturschwankungen die Liquidität des Unternehmens nicht gefährden?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[3].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[3].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[3].kvdName}}</strong></p>
-                  <p>
-                    Die Verkaufsfähigkeit eines Unternehmens erlaubt keine allzu große Abhängigkeit von Kunden, Mitarbeitern oder Lieferanten. Wie gut haben Sie Ihr Unternehmen darauf vorbereitet?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-        </div>
-        <div class="columns">
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[4].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[4].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[4].kvdName}}</strong></p>
-                  <p>
-                    Einer der wichtigsten Faktoren, um Ihr Unternehmen verkaufbar zu machen, ist Ihr Wachstumspotenzial, besonders die Skalierbarkeit und Flexibilität Ihrer Geschäftsmodelle. Wie dynamisch sind Sie aufgestellt?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[5].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[5].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[5].kvdName}}</strong></p>
-                  <p>
-                    Haben Sie ein gutes Innovations- und Lifecyclemanagement? Wie fördern und pflegen Sie eine aktive Innovationskultur? Innovationen sind der Grundstein für Wachstum und Beständigkeit in der Zukunft. Wie leben Sie Innovation?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-        </div>
-        <div class="columns">
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[6].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[6].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[6].kvdName}}</strong></p>
-                  <p>
-                    Dieser Faktor misst das Ausmaß, in dem Ihr Geschäft ohne Sie erfolgreich sein kann. Nur, wenn Ihr Unternehmen auch ohne Sie gut läuft und in der Lage ist, Wachstum zu generieren, besitzt es Attraktivität für potentielle Investoren. Wie gut läuft es ohne Sie?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-          <div class="column ">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-one-quarter">
-                  <v-progress-circular
-                    :size="100"
-                    :width="15"
-                    :rotate="360"
-                    :value="bokvd.kvds[7].kvdIndex"
-                    color="teal">
-                    {{ bokvd.kvds[7].kvdIndex }}
-                  </v-progress-circular>
-                </div>
-                <div class="column ">
-                  <p><strong>{{bokvd.kvds[7].kvdName}}</strong></p>
-                  <p>
-                    Der X-Faktor, der viele Unternehmenskäufe rein aus finanzmathematischen Gesichtspunkten nur schwer nachvollziehen lässt, sind immaterielle Mehrwert, die das Unternehmen für den Käufer alternativlos machen. Was macht Sie besonders?
-                  </p>
-                </div>
-              </div>
-              <!--<progress class="progress is-primary is-small" :value='bokvd.kvds[0].kvdIndex' max="100"></progress>-->
-
-            </div>
-          </div>
-        </div>
-
-
       </div>
+
+      <div class="box">
+        <div v-for="kvd in kvds" class="box is-width-half is-inline-block" @click='tableVisible(kvd.id)'>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <el-progress type="circle" :percentage='getKVDindex(kvd.id)' color="#d83737"></el-progress>
+            </div>
+            <div class="column ">
+              <p><strong>{{kvd.name}}</strong></p>
+              <p>{{kvd.text}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div v-else>
       <QuestionnaireRoot/>
     </div>
+    <el-button type="text">open a Table nested Dialog</el-button>
+
+    <el-dialog width="80%" :visible.sync="dialogTableVisible">
+      <div class="box">
+        <div v-for="question in getQuestions(currentKvdId)" class="box is-width-half is-inline-block">
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <el-progress type="circle" :percentage='question.value'></el-progress>
+            </div>
+            <div class="column">{{question.text}}</div>
+          </div>
+          <el-slider v-model='question.value'></el-slider>
+        </div>
+      </div>
+    </el-dialog>
+
 
   </section>
 </template>
@@ -229,24 +68,103 @@
   import Vue from 'vue';
   import axios from 'axios';
   import {Util} from '../shared/Util';
+  import {SET_ANSWER} from '../../store/mutation-types';
+  import {IAnswer} from '../../store';
   export default Vue.extend({
     created(){
+      this.initKVD();
       Util.getHTTP('').get('answer/' + this.userEmail, {})
         .then(response => {
-          this.bokvd = response.data
-          if (this.bokvd == null) {
+          this.$store.commit(SET_ANSWER, response.data);
+          if (this.$store.state.answer == null) {
             this.isKVD = false
+
+          } else {
+            this.init()
           }
+
         });
+
     },
-    methods: {},
+    methods: {
+
+      initKVD(){
+        Util.getHTTP('').get('/kvd', {})
+          .then(response => {
+            this.kvds = response.data
+
+          });
+      },
+
+      getOverallindex(){
+        let index: number = 0
+        let count: number = 0
+
+
+        for (let question of this.$store.state.answer.questions) {
+            count++;
+            index = index + question.value
+        }
+        return Math.round(index / count);
+      },
+
+      getKVDindex(kvdId: number){
+
+        let index: number = 0
+        let count: number = 0
+
+
+        for (let question of this.$store.state.answer.questions) {
+
+          if (kvdId == question.kvdId) {
+            count++;
+            index = index + question.value
+          }
+        }
+        return Math.round(index / count);
+
+      },
+      getQuestions(kvdId: number){
+
+        let list: Array<Object> = [];
+
+        for (let question of this.$store.state.answer.questions) {
+
+
+          if (kvdId == question.kvdId) {
+            console.log(question)
+            list.push(question)
+          }
+        }
+        return list;
+      },
+
+      init(){
+
+      },
+      tableVisible(kvdId: number){
+        this.dialogTableVisible = true;
+        this.currentKvdId = kvdId;
+      }
+    },
     data(){
       return {
         userEmail: localStorage.getItem(Util.USER_EMAIL),
-        bokvd: Object,
+        kvds: [],
         isKVD: true,
+        dialogTableVisible: false,
+        currentKvdId: 0,
       }
     }
   })
 
 </script>
+
+<style scoped>
+  .is-width-half {
+    width: calc(50% - 5px);
+    margin-right: 5px;
+    vertical-align: top;
+    /*height: 175px;*/
+  }
+</style>

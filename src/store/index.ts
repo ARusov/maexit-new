@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import {DELETE_ITEM, EDIT_ITEM, SET_ITEMS} from './mutation-types'
+import {DELETE_ITEM, EDIT_ITEM, SET_ANSWER, SET_ITEMS} from './mutation-types'
 import {SET_QUESTIONS} from './mutation-types'
 import {SET_COURSE} from './mutation-types'
 
@@ -25,10 +25,21 @@ export interface IQuestion {
 //   name:string
 // }
 
+
+interface IAnswerState {
+  answer : IAnswer,
+  loading: boolean;
+}
+export interface IAnswer{
+  name: string;
+}
+
 export default new Vuex.Store({
   state: {
+
     items: [],
     questions:[],
+    answer:Object,
     loading: true,
     isLoggedIn:false,
     questionEmail:'',
@@ -38,6 +49,12 @@ export default new Vuex.Store({
   mutations: {
     [SET_QUESTIONS](state, payload) {
       state.questions = payload;
+      state.loading = false;
+    },
+
+
+    [SET_ANSWER](state, payload) {
+      state.answer = payload;
       state.loading = false;
     },
 
