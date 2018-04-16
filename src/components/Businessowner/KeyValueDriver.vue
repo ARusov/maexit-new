@@ -29,7 +29,8 @@
         <div v-for="kvd in kvds" class="box is-width-half is-inline-block" @click='tableVisible(kvd.id)'>
           <div class="columns">
             <div class="column is-one-quarter">
-              <el-progress type="circle" :percentage='getKVDindex(kvd.id)' color="#d83737"></el-progress>
+              <!--<el-progress type="circle" :percentage="80" color="#8e71c7"></el-progress>-->
+              <el-progress type="circle" :percentage='getKVDindex(kvd.id)' :color='kvd.color'></el-progress>
             </div>
             <div class="column ">
               <p><strong>{{kvd.name}}</strong></p>
@@ -51,11 +52,15 @@
         <div v-for="question in getQuestions(currentKvdId)" class="box is-width-half is-inline-block">
           <div class="columns">
             <div class="column is-one-quarter">
-              <el-progress type="circle" :percentage='question.value'></el-progress>
+              <el-progress
+                type="circle"
+                :percentage='question.value'
+                collor="red"></el-progress>
             </div>
-            <div class="column">{{question.text}}</div>
+            <div class="column">{{question.influencerText}}</div>
           </div>
-          <el-slider v-model='question.value'></el-slider>
+          <el-slider v-model='question.value' :step="10"
+                     show-stops></el-slider>
         </div>
       </div>
     </el-dialog>
@@ -102,8 +107,8 @@
 
 
         for (let question of this.$store.state.answer.questions) {
-            count++;
-            index = index + question.value
+          count++;
+          index = index + question.value
         }
         return Math.round(index / count);
       },

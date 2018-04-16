@@ -49,10 +49,3 @@ after_success:
      # Build
      - cd ./maexit-new
      - npm run build
-     -
-     - cd dist
-     - git config --global user.name "INSERT Your Name"
-     - git config --global user.email "INSERT-Your-Email@address.com"
-     - git add *
-     - git commit -am "Travis CI"
-     - git push origin master
