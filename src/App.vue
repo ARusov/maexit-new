@@ -25,6 +25,10 @@
   import fontawesome from '@fortawesome/fontawesome'
   import brands from '@fortawesome/fontawesome-free-brands'
   import { faSpinner } from '@fortawesome/fontawesome-free-solid'
+  import CircleKVD from './components/Businessowner/CircleKVD.vue';
+
+
+
 
 
 
@@ -43,6 +47,8 @@
       Curriculum,
       Lecture,
       CourseSection,
+      CircleKVD
+
 //      Icon
     }
   });

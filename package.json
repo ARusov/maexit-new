@@ -29,6 +29,7 @@
     "bulma-start": "^0.0.2",
     "element-ui": "^2.2.1",
     "jwt-decode": "^2.2.0",
+    "npm": "^6.0.0",
     "vue": "^2.5.2",
     "vue-awesome": "^2.3.5",
     "vue-jwt-decode": "^0.1.0",

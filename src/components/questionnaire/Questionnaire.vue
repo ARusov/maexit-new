@@ -90,6 +90,7 @@
 
     created() {
 
+        console.log("questions a  re here")
         if(this.$store.state.questionEmail==''){
           this.$router.push('questionnaire')
         }
@@ -113,6 +114,11 @@
       }
     },
 
+    computed: {
+      projects(): IQuestion[] {
+        return this.$store.state.questions;
+      }
+    },
     methods: {
       getQuestions(page: number){
         var q: IQuestion[] = new Array()
@@ -129,11 +135,7 @@
       },
 
 
-      computed: {
-        projects(): IQuestion[] {
-          return this.$store.state.questions;
-        }
-      },
+
       previousPage(){
         this.currentPage--;
       },

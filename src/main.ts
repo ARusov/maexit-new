@@ -6,6 +6,7 @@ import StarRating from 'vue-star-rating'
 import HowTo from './components/HowTo.vue';
 import LoginDropDown from './components/root/LoginDropDown.vue';
 import KeyValueDriver from './components/Businessowner/KeyValueDriver.vue';
+import CircleKVD from './components/Businessowner/CircleKVD.vue';
 import BusinessProfile from './components/Businessowner/BusinessProfile.vue';
 import CourseInfo from './components/consultant/CourseInfo.vue';
 import Curriculum from './components/consultant/Curriculum.vue';
@@ -38,6 +39,7 @@ Vue.component('Curriculum', Curriculum)
 Vue.component('Lecture', Lecture)
 Vue.component('CourseSection', CourseSection)
 Vue.component('QuestionnaireRoot', QuestionnaireRoot)
+Vue.component('CircleKVD', CircleKVD)
 // Vue.component(Slider.name, Slider)
 // Vue.component(Dialog.name, Dialog)
 Vue.use(Element);

@@ -9,4 +9,5 @@ export const SET_QUESTIONS = 'SET_QUESTIONS';
 
 //COURSE MUTATIONS
 export const SET_COURSE = 'SET_COURSE';
+
 export const SET_ANSWER = 'SET_ANSWER';

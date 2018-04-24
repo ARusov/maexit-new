@@ -39,6 +39,7 @@ export default new Vuex.Store({
 
     items: [],
     questions:[],
+    kvds:[],
     answer:Object,
     loading: true,
     isLoggedIn:false,
